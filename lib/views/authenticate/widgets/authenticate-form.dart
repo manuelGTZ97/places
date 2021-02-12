@@ -22,6 +22,11 @@ class _AuthenticateFormState extends State<AuthenticateForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.yellow[700], Colors.yellow[500]])),
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
       child: Form(
           key: _formKey,
@@ -29,8 +34,7 @@ class _AuthenticateFormState extends State<AuthenticateForm> {
             children: <Widget>[
               SizedBox(height: 20.0),
               TextFormField(
-                decoration: (InputDecoration(
-                    fillColor: Colors.white, filled: true, hintText: 'Email')),
+                decoration: (InputDecoration(filled: true, hintText: 'Email')),
                 validator: (val) {
                   return val.isEmpty ? 'Enter an email' : null;
                 },
@@ -41,7 +45,6 @@ class _AuthenticateFormState extends State<AuthenticateForm> {
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: (InputDecoration(
-                  fillColor: Colors.white,
                   filled: true,
                   hintText: 'Password',
                 )),
@@ -56,10 +59,8 @@ class _AuthenticateFormState extends State<AuthenticateForm> {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.green[300],
                 child: Text(
                   widget.buttonLabel,
-                  style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
                   await widget.onSubmit();

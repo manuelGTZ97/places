@@ -22,8 +22,24 @@ class _AuthenticateState extends State<Authenticate> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AuthenticateViewModel>(
         create: (context) => AuthenticateViewModel(),
-        child: showSignIn
-            ? SignIn(toggleView: toggleView)
-            : Register(toggleView: toggleView));
+        child: Column(children: <Widget>[
+          Container(
+              height: 380,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.1, 0.5],
+                    colors: [Colors.tealAccent[100], Colors.greenAccent[200]]),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(95),
+                    bottomRight: Radius.circular(95)),
+              ))
+        ]));
   }
 }
+
+// showSignIn
+//             ? SignIn(toggleView: toggleView)
+//             : Register(toggleView: toggleView));

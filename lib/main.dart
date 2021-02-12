@@ -13,6 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
-        value: AuthService().user, child: MaterialApp(home: Wrapper()));
+        value: AuthService().user,
+        child: MaterialApp(
+            theme: ThemeData(
+                brightness: Brightness.light,
+                primaryColor: Colors.greenAccent[200],
+                textTheme: TextTheme(
+                    bodyText2: TextStyle(fontWeight: FontWeight.normal))),
+            home: Wrapper()));
   }
 }

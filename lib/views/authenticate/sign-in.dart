@@ -28,13 +28,11 @@ class SignIn extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green[300],
           title: Text('Sign in to Places',
               style: TextStyle(fontWeight: FontWeight.normal)),
           actions: <Widget>[
             FlatButton.icon(
                 onPressed: toggleView,
-                textColor: Colors.white,
                 icon: Icon(Icons.person),
                 label: Text('Sign up'))
           ],

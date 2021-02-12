@@ -28,13 +28,11 @@ class Register extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green[300],
           title: Text('Sign up to Places',
               style: TextStyle(fontWeight: FontWeight.normal)),
           actions: <Widget>[
             FlatButton.icon(
                 onPressed: toggleView,
-                textColor: Colors.white,
                 icon: Icon(Icons.person),
                 label: Text('Sign in'))
           ],
