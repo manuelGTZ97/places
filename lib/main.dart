@@ -16,8 +16,25 @@ class MyApp extends StatelessWidget {
         value: AuthService().user,
         child: MaterialApp(
             theme: ThemeData(
+                backgroundColor: Colors.white,
+                scaffoldBackgroundColor: Colors.white,
                 brightness: Brightness.light,
                 primaryColor: Colors.greenAccent[200],
+                accentColor: Colors.brown[200],
+                buttonTheme: ButtonThemeData(
+                    buttonColor: Colors.brown[200],
+                    textTheme: ButtonTextTheme.normal),
+                inputDecorationTheme: InputDecorationTheme(
+                  floatingLabelBehavior: FloatingLabelBehavior.auto,
+                  labelStyle: TextStyle(color: Colors.brown[200]),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.brown[300]),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4)),
+                    borderSide: BorderSide(width: 1, color: Colors.brown[300]),
+                  ),
+                ),
                 textTheme: TextTheme(
                     bodyText2: TextStyle(fontWeight: FontWeight.normal))),
             home: Wrapper()));
