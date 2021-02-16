@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:places/services/auth.dart';
 
-class AuthenticateViewModel with ChangeNotifier {
+class SignInViewModel with ChangeNotifier {
   final AuthService _auth = AuthService();
   String _email;
   String _password;
@@ -13,11 +13,6 @@ class AuthenticateViewModel with ChangeNotifier {
 
   setPassword(String password) {
     _password = password;
-    notifyListeners();
-  }
-
-  Future registerWithEmailAndPassword() async {
-    await _auth.registerWithEmailAndPassword(_email, _password);
     notifyListeners();
   }
 

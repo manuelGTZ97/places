@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:places/view-models/authenticate-view-model.dart';
 import 'package:places/views/authenticate/register.dart';
 import 'package:places/views/authenticate/sign-in.dart';
-import 'package:provider/provider.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -20,10 +18,8 @@ class _AuthenticateState extends State<Authenticate> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<AuthenticateViewModel>(
-        create: (context) => AuthenticateViewModel(),
-        child: showSignIn
-            ? SignIn(toggleView: toggleView)
-            : Register(toggleView: toggleView));
+    return showSignIn
+        ? SignIn(toggleView: toggleView)
+        : Register(toggleView: toggleView);
   }
 }
