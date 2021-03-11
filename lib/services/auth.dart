@@ -31,11 +31,10 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+      Firestore.instance
+          .collection("users")
+          .add({"name": name, "email": email, "uid": user.uid});
       return _userFromFirebaseUser(user);
-      // Firestore.instance
-      //     .collection("users")
-      //     .add({"name": name, "email": email, "uid": user.uid});
-
     } catch (e) {
       print(e.toString());
       return null;
