@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:places/shared/widgets/oval-gradient-container.dart';
 import 'package:places/view-models/home-view-model.dart';
-import 'package:places/views/home/places-list.dart';
+import 'package:places/views/home/widgets/places-list.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
@@ -47,27 +48,13 @@ class Home extends StatelessWidget {
             )
           ],
         )),
-        body: PlacesList(),
-        // body: Column(
-        //   children: <Widget>[
-        //     Container(
-        //         padding: EdgeInsets.symmetric(horizontal: 30),
-        //         alignment: Alignment.centerLeft,
-        //         child: Text(
-        //           'Places App',
-        //           style: Theme.of(context).textTheme.headline5,
-        //         ),
-        //         height: 70,
-        //         width: double.infinity,
-        //         decoration: BoxDecoration(
-        //           color: Theme.of(context).primaryColor,
-        //           borderRadius: BorderRadius.only(
-        //               bottomLeft: Radius.circular(40),
-        //               bottomRight: Radius.circular(40)),
-        //         )),
-
-        //   ],
-        // ),
+        body: Column(
+          children: <Widget>[
+            OvalGradientContainer(
+                height: 70, borderBottomLeft: 40, borderBottomRight: 40),
+            PlacesList()
+          ],
+        ),
       ),
     );
   }

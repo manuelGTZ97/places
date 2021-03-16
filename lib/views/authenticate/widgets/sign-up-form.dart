@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:places/view-models/sign-up-view-model.dart';
 import 'package:provider/provider.dart';
+import 'package:places/view-models/authenticate-view-model.dart';
 
 class SignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final SignUpViewModel signUpViewModel =
-        Provider.of<SignUpViewModel>(context, listen: true);
+    final AuthenticateViewModel authenticateViewModel =
+        Provider.of<AuthenticateViewModel>(context, listen: false);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
       child: Form(
@@ -17,28 +18,28 @@ class SignUpForm extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(labelText: "Name"),
                 onChanged: (val) {
-                  signUpViewModel.setName(val);
+                  authenticateViewModel.setName(val);
                 },
               ),
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: InputDecoration(labelText: "Email"),
                 onChanged: (val) {
-                  signUpViewModel.setEmail(val);
+                  authenticateViewModel.setEmail(val);
                 },
               ),
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: InputDecoration(labelText: "Password"),
                 onChanged: (val) {
-                  signUpViewModel.setPassword(val);
+                  authenticateViewModel.setPassword(val);
                 },
               ),
               SizedBox(height: 20.0),
               RaisedButton(
                 child: Text("Sign Up"),
                 onPressed: () async {
-                  await signUpViewModel.registerWithEmailAndPassword();
+                  await authenticateViewModel.registerWithEmailAndPassword();
                 },
               ),
             ],

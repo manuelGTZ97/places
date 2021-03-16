@@ -33,7 +33,8 @@ class AuthService {
       FirebaseUser user = result.user;
       Firestore.instance
           .collection("users")
-          .add({"name": name, "email": email, "uid": user.uid});
+          .document(user.uid)
+          .setData({"name": name, "email": email, "uid": user.uid});
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
