@@ -47,26 +47,27 @@ class Home extends StatelessWidget {
             )
           ],
         )),
-        body: Column(
-          children: <Widget>[
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Places App',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                height: 70,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40),
-                      bottomRight: Radius.circular(40)),
-                )),
-            //PlacesList()
-          ],
-        ),
+        body: PlacesList(),
+        // body: Column(
+        //   children: <Widget>[
+        //     Container(
+        //         padding: EdgeInsets.symmetric(horizontal: 30),
+        //         alignment: Alignment.centerLeft,
+        //         child: Text(
+        //           'Places App',
+        //           style: Theme.of(context).textTheme.headline5,
+        //         ),
+        //         height: 70,
+        //         width: double.infinity,
+        //         decoration: BoxDecoration(
+        //           color: Theme.of(context).primaryColor,
+        //           borderRadius: BorderRadius.only(
+        //               bottomLeft: Radius.circular(40),
+        //               bottomRight: Radius.circular(40)),
+        //         )),
+
+        //   ],
+        // ),
       ),
     );
   }

@@ -7,4 +7,8 @@ class DatabaseService {
   final String uid;
 
   DatabaseService({this.uid});
+
+  Future<QuerySnapshot> getCollection() async {
+    return placesCollection.getDocuments();
+  }
 }
