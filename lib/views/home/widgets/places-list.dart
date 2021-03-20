@@ -16,7 +16,7 @@ class PlacesList extends StatelessWidget {
           Widget child;
           if (snapshot.hasData) {
             return ListView.builder(
-                scrollDirection: Axis.vertical,
+                physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: snapshot.data.documents.length,
                 itemBuilder: (context, index) {
