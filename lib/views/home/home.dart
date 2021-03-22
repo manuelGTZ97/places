@@ -7,6 +7,41 @@ import 'package:provider/provider.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var drawer = (Drawer(
+        child: ListView(
+      padding: EdgeInsets.zero,
+      children: <Widget>[
+        DrawerHeader(
+            child: Text('Places App'),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.1, 0.5],
+                  colors: [Colors.tealAccent[100], Colors.greenAccent[200]]),
+            )),
+        ListTile(
+          title: Text('Home'),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('Profile'),
+          onTap: () {},
+        )
+      ],
+    )));
+
+    var body = (SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Column(
+          children: <Widget>[
+            OvalGradientContainer(
+                height: 70, borderBottomLeft: 40, borderBottomRight: 40),
+            SizedBox(height: 20),
+            PlacesList()
+          ],
+        )));
+
     return ChangeNotifierProvider<HomeViewModel>(
       create: (context) => HomeViewModel(),
       child: Scaffold(
@@ -19,45 +54,8 @@ class Home extends StatelessWidget {
               )
             ],
           ),
-          drawer: Drawer(
-              child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                  child: Text('Places App'),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [
-                          0.1,
-                          0.5
-                        ],
-                        colors: [
-                          Colors.tealAccent[100],
-                          Colors.greenAccent[200]
-                        ]),
-                  )),
-              ListTile(
-                title: Text('Home'),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Text('Profile'),
-                onTap: () {},
-              )
-            ],
-          )),
-          body: SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              child: Column(
-                children: <Widget>[
-                  OvalGradientContainer(
-                      height: 70, borderBottomLeft: 40, borderBottomRight: 40),
-                  SizedBox(height: 20),
-                  PlacesList()
-                ],
-              ))),
+          drawer: drawer,
+          body: body),
     );
   }
 }

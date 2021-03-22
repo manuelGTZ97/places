@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../detail.dart';
+import '../../detail/detail.dart';
 
 class PlaceTile extends StatelessWidget {
   final DocumentSnapshot place;
