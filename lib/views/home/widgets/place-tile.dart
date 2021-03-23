@@ -1,20 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import '../../detail/detail.dart';
+import 'package:places/models/place.dart';
+import 'package:places/views/detail/detail.dart';
 
 class PlaceTile extends StatelessWidget {
-  final DocumentSnapshot place;
+  final Place place;
   PlaceTile({this.place});
 
   @override
   Widget build(BuildContext context) {
+    onTap() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Detail(
+                    place: place,
+                  )));
+    }
+
     return Card(
       child: InkWell(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Detail()));
-        },
+        onTap: onTap,
         child: Stack(
           alignment: Alignment.center,
           textDirection: TextDirection.rtl,
@@ -27,8 +32,7 @@ class PlaceTile extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                      'https://imagenescityexpress.scdn6.secure.raxcdn.com/sites/default/files/styles/hotel_landing_page/public/2020-01/angel-independencia-historia.jpg?itok=XTs0r_eK'),
+                  image: NetworkImage(place.image),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
@@ -46,7 +50,7 @@ class PlaceTile extends StatelessWidget {
                   height: double.infinity,
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Text('Data',
+                  child: Text(place.title,
                       style: Theme.of(context).textTheme.subtitle1),
                 )),
           ],

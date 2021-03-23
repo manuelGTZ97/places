@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:places/models/place.dart';
 
 class Detail extends StatelessWidget {
+  final Place place;
+  Detail({this.place});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +17,7 @@ class Detail extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(
-                        'https://imagenescityexpress.scdn6.secure.raxcdn.com/sites/default/files/styles/hotel_landing_page/public/2020-01/angel-independencia-historia.jpg?itok=XTs0r_eK'),
-                    fit: BoxFit.cover)),
+                    image: NetworkImage(place.image), fit: BoxFit.cover)),
           )
         ],
       ),
