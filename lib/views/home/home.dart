@@ -21,10 +21,12 @@ class Home extends StatelessWidget {
                   colors: [Colors.tealAccent[100], Colors.greenAccent[200]]),
             )),
         ListTile(
+          leading: Icon(Icons.home),
           title: Text('Home'),
           onTap: () {},
         ),
         ListTile(
+          leading: Icon(Icons.account_circle),
           title: Text('Profile'),
           onTap: () {},
         )
