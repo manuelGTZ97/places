@@ -29,7 +29,13 @@ class Home extends StatelessWidget {
           leading: Icon(Icons.account_circle),
           title: Text('Profile'),
           onTap: () {},
-        )
+        ),
+        Divider(),
+        ListTile(
+          leading: Icon(Icons.exit_to_app),
+          title: Text('Log Out'),
+          onTap: () {},
+        ),
       ],
     )));
 

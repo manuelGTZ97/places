@@ -23,7 +23,7 @@ class DetailBody extends StatelessWidget {
                       backgroundImage: NetworkImage(place.user.photoUrl),
                     ),
                     SizedBox(height: 5),
-                    Text("By: ${place.user.displayName}",
+                    Text("Posted by: ${place.user.displayName}",
                         style: Theme.of(context).textTheme.caption)
                   ],
                 ),
