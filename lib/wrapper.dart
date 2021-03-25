@@ -5,6 +5,8 @@ import 'package:places/models/user.dart';
 import 'package:places/views/home/home.dart';
 
 class Wrapper extends StatelessWidget {
+  static const ROUTE_NAME = "/";
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);

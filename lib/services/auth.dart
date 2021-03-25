@@ -10,6 +10,7 @@ class AuthService {
         ? User(
             uid: user.uid,
             displayName: user.displayName,
+            email: user.email,
             photoUrl: user.photoUrl)
         : null;
   }
