@@ -1,21 +1,35 @@
 import 'package:flutter/cupertino.dart';
-import 'package:places/services/auth.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:places/services/database.dart';
 
 class AddPlaceViewModel with ChangeNotifier {
   final DatabaseService _databaseService = DatabaseService();
+
   String _description;
-  String _image;
-  String _postedByUserId;
+  PickedFile _image;
   String _title;
+  String _urlImage;
+  String _postedByUserId;
 
   setDescription(String description) {
     _description = description;
     notifyListeners();
   }
 
-  setImage(String image) {
+  setImage(PickedFile image) {
     _image = image;
+    notifyListeners();
+  }
+
+  PickedFile get image => _image;
+
+  setTitle(String title) {
+    _title = title;
+    notifyListeners();
+  }
+
+  setUrlImage(String urlImage) {
+    _urlImage = urlImage;
     notifyListeners();
   }
 
@@ -24,8 +38,15 @@ class AddPlaceViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  setTitle(String title) {
-    _title = title;
-    notifyListeners();
+  imgFromGallery() async {
+    PickedFile image = await ImagePicker()
+        .getImage(source: ImageSource.gallery, imageQuality: 50);
+    setImage(image);
+  }
+
+  savePlace(uid) async {
+    setPostedByUserId(uid);
+    await _databaseService.savePlaceInCollection(
+        _title, _description, _urlImage, _postedByUserId);
   }
 }

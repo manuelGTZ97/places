@@ -25,12 +25,12 @@ class Home extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          actions: <Widget>[
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.search),
-            )
-          ],
+          // actions: <Widget>[
+          //   FlatButton(
+          //     onPressed: () {},
+          //     child: Text('Log Out'),
+          //   )
+          // ],
         ),
         drawer: MainDrawer(),
         body: body,

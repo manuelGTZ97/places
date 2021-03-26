@@ -33,4 +33,14 @@ class DatabaseService {
         email: snapshot.data['email'] ?? '',
         photoUrl: snapshot.data['photoUrl'] ?? '');
   }
+
+  Future savePlaceInCollection(String title, String description,
+      String urlImage, String postedByUserId) async {
+    await Firestore.instance.collection("places").document().setData({
+      "description": description,
+      "image": urlImage,
+      "postedByUserId": postedByUserId,
+      "title": title,
+    });
+  }
 }

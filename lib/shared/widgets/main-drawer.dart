@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/view-models/home-view-model.dart';
 import 'package:places/wrapper.dart';
 import 'package:places/views/profile/profile.dart';
 import 'package:provider/provider.dart';
@@ -61,12 +62,6 @@ class _MainDraweState extends State<MainDrawer> {
             onTap: () {
               _selectProfileScreen();
             },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Log Out'),
-            onTap: () {},
           ),
         ],
       ),

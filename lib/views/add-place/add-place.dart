@@ -1,75 +1,21 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:places/view-models/add-place-view-model.dart';
+import 'package:places/views/add-place/widgets/add-place-appbar.dart';
+import 'package:places/views/add-place/widgets/add-place-form.dart';
+import 'package:provider/provider.dart';
 
-class AddPlace extends StatefulWidget {
-  @override
-  _AddPlaceState createState() => _AddPlaceState();
-}
-
-class _AddPlaceState extends State<AddPlace> {
-  PickedFile _image;
-
-  _imgFromGallery() async {
-    PickedFile image = await ImagePicker()
-        .getImage(source: ImageSource.gallery, imageQuality: 50);
-
-    setState(() {
-      _image = image;
-    });
-  }
-
-  void _showPicker(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return SafeArea(
-            child: Container(
-              child: Wrap(
-                children: <Widget>[
-                  ListTile(
-                      leading: Icon(Icons.photo_library),
-                      title: Text('Photo Library'),
-                      onTap: () {
-                        _imgFromGallery();
-                        Navigator.of(context).pop();
-                      }),
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
+class AddPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
+    return ChangeNotifierProvider<AddPlaceViewModel>(
+      create: (context) => AddPlaceViewModel(),
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(60), child: AddPlaceAppbar()),
+        body: SingleChildScrollView(
+          child: AddPlaceForm(),
         ),
-        body: Column(
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                _showPicker(context);
-              },
-              child: ClipRRect(
-                  child: _image != null
-                      ? Image.file(
-                          File(_image.path),
-                          width: 300,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        )
-                      : Image.network(
-                          'https://content.hostgator.com/img/weebly_image_sample.png',
-                          width: 300,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        )),
-            )
-          ],
-        ));
+      ),
+    );
   }
 }
