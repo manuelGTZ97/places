@@ -38,29 +38,6 @@ class AddPlaceForm extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: <Widget>[
-          // GestureDetector(
-          //   onTap: () {
-          //     _showPicker(context);
-          //   },
-          //   child: ClipRRect(
-          //       child: Container(
-          //           decoration: BoxDecoration(
-          //               border:
-          //                   Border.all(color: Theme.of(context).accentColor)),
-          //           child: addPlaceViewModel.image != null
-          //               ? Image.file(
-          //                   File(addPlaceViewModel.image.path),
-          //                   width: 250,
-          //                   height: 200,
-          //                   fit: BoxFit.cover,
-          //                 )
-          //               : Image.network(
-          //                   'http://www.plafam.org.ve/wp-content/themes/15zine/library/images/placeholders/placeholder-759x500@2x.png',
-          //                   width: 250,
-          //                   height: 200,
-          //                   fit: BoxFit.cover,
-          //                 ))),
-          // ),
           Form(
               key: null,
               child: Column(
@@ -95,3 +72,27 @@ class AddPlaceForm extends StatelessWidget {
     );
   }
 }
+
+// GestureDetector(
+//   onTap: () {
+//     _showPicker(context);
+//   },
+//   child: ClipRRect(
+//       child: Container(
+//           decoration: BoxDecoration(
+//               border:
+//                   Border.all(color: Theme.of(context).accentColor)),
+//           child: addPlaceViewModel.image != null
+//               ? Image.file(
+//                   File(addPlaceViewModel.image.path),
+//                   width: 250,
+//                   height: 200,
+//                   fit: BoxFit.cover,
+//                 )
+//               : Image.network(
+//                   'http://www.plafam.org.ve/wp-content/themes/15zine/library/images/placeholders/placeholder-759x500@2x.png',
+//                   width: 250,
+//                   height: 200,
+//                   fit: BoxFit.cover,
+//                 ))),
+// ),

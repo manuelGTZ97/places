@@ -10,6 +10,7 @@ class PlacesList extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeViewModel homeViewModel =
         Provider.of<HomeViewModel>(context, listen: true);
+
     return FutureBuilder<List<Place>>(
         future: homeViewModel.placesCollection,
         builder: (context, snapshot) {

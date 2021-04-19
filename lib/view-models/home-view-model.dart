@@ -23,4 +23,8 @@ class HomeViewModel with ChangeNotifier {
   Future signOut() async {
     await _auth.signOut();
   }
+
+  Future getPlacesCollection() async {
+    placesCollecition = _databaseService.getPlacesCollection();
+  }
 }
