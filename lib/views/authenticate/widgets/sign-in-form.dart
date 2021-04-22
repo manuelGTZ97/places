@@ -37,7 +37,17 @@ class SignInForm extends StatelessWidget {
                   ),
                   onPressed: () async {
                     await authenticateViewModel.signInWithEmailAndPassowrd();
-                  })
+                  }),
+              StreamBuilder(
+                  stream: authenticateViewModel.messageError,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (!snapshot.hasData) {
+                      return Text("");
+                    }
+                    return Text(snapshot.data,
+                        style: TextStyle(color: Colors.red[500]));
+                  }),
             ],
           ),
         ));

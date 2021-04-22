@@ -16,7 +16,8 @@ class SignOutButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(primary: Colors.red[600]),
         onPressed: () {
           profileViewModel.signOut();
-          Navigator.of(context).pushNamed(Wrapper.ROUTE_NAME);
+          Navigator.pushNamedAndRemoveUntil(
+              context, Wrapper.ROUTE_NAME, (route) => false);
         });
   }
 }

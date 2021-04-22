@@ -6,7 +6,7 @@ class SignUpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthenticateViewModel authenticateViewModel =
-        Provider.of<AuthenticateViewModel>(context, listen: false);
+        Provider.of<AuthenticateViewModel>(context, listen: true);
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -40,8 +40,19 @@ class SignUpForm extends StatelessWidget {
                 child: Text("Sign Up"),
                 onPressed: () async {
                   await authenticateViewModel.registerWithEmailAndPassword();
+                  Navigator.of(context).pop();
                 },
               ),
+              StreamBuilder(
+                  stream: authenticateViewModel.messageError,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (!snapshot.hasData) {
+                      return Text("");
+                    }
+                    return Text(snapshot.data,
+                        style: TextStyle(color: Colors.red[500]));
+                  }),
             ],
           )),
     );

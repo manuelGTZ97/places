@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:places/services/auth.dart';
 
@@ -6,6 +8,8 @@ class AuthenticateViewModel with ChangeNotifier {
   String _email;
   String _password;
   String _name;
+  StreamController<String> _messageError =
+      new StreamController<String>.broadcast();
 
   setEmail(String email) {
     _email = email;
@@ -22,12 +26,25 @@ class AuthenticateViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  Stream<String> get messageError {
+    return _messageError.stream.map((x) => x);
+  }
+
   Future signInWithEmailAndPassowrd() async {
-    await _auth.signInWIthEmailAndPassword(_email, _password);
+    try {
+      await _auth.signInWIthEmailAndPassword(_email, _password);
+      notifyListeners();
+    } catch (e) {
+      _messageError.add(e.message);
+    }
   }
 
   Future registerWithEmailAndPassword() async {
-    await _auth.registerWithEmailAndPassword(_email, _password, _name);
-    notifyListeners();
+    try {
+      await _auth.registerWithEmailAndPassword(_email, _password, _name);
+      notifyListeners();
+    } catch (e) {
+      _messageError.add(e.message);
+    }
   }
 }
